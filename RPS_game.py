@@ -44,14 +44,14 @@ def play(player1, player2, num_games, verbose=False):
 
     return (win_rate)
 
-
+# cycles through choices
 def quincy(prev_play, counter=[0]):
 
     counter[0] += 1
     choices = ["R", "R", "P", "P", "S"]
     return choices[counter[0] % len(choices)]
 
-
+# tracks opponent moves, determines opponent's most freq move and plays the counter to it
 def mrugesh(prev_opponent_play, opponent_history=[]):
     opponent_history.append(prev_opponent_play)
     last_ten = opponent_history[-10:]
@@ -63,14 +63,14 @@ def mrugesh(prev_opponent_play, opponent_history=[]):
     ideal_response = {'P': 'S', 'R': 'P', 'S': 'R'}
     return ideal_response[most_frequent]
 
-
+# tracks opponent prev move and responds to that counter
 def kris(prev_opponent_play):
     if prev_opponent_play == '':
         prev_opponent_play = "R"
     ideal_response = {'P': 'S', 'R': 'P', 'S': 'R'}
     return ideal_response[prev_opponent_play]
 
-
+# keeps track of opponent play order and makes prediction based on play_order
 def abbey(prev_opponent_play,
           opponent_history=[],
           play_order=[{
